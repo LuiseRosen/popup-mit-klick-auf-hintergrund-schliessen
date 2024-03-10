@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Popup Party</title>
+
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .popup-btn {
+            height: 80px;
+            width: 160px;
+            font-size: 40px;
+            border-radius: 12px;
+        }
+
+        #popupBackground {
+            display: none;
+            position: absolute;
+            top: 0;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background-color: white;
+            width: 300px;
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="openPopup()" class="popup-btn">Popup</button>
+
+    <div onclick="closePopup()" id="popupBackground">
+        <div class="popup-content" onclick="doNotClose(event)">
+            <form action="#">
+                <input type="text">
+                <input type="text">
+                <button onclick="save()">Speichern</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+       function openPopup() {
+        popupBackground.style.display = 'flex';
+        }
+
+       function closePopup() {
+            popupBackground.style.display = 'none';
+        }
+
+        function doNotClose(event) { // event ist eine Variable, die immer in JavaScript zur Verfügung steht. evebt ist ein Objekt mit verschiedenen Funktionen
+            event.stopPropagation(); // stopPropagation ist eine Standardfunktion von JavaScript. Es unterbindet sie Standardfunktionalität, hier in dem Fall unterbindet es die closePopup() Funktion, die auf dem Hintergrund liegt 
+        }
+    </script>
+</body>
+</html>
